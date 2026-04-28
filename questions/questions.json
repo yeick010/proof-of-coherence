@@ -1,0 +1,616 @@
+{
+  "$schema": "https://proof-of-coherence.example/schemas/questions-v0.1.0.json",
+  "version": "0.1.0",
+  "generated": "2026-04-28",
+  "total": 60,
+  "fragility_vocabulary": [
+    "lexical_ambiguity",
+    "normative_tradeoff",
+    "empirical_uncertainty",
+    "self_reference",
+    "scale_dependence"
+  ],
+  "questions": [
+
+    {
+      "id": "ai-align-001",
+      "domain": "ai_alignment",
+      "text": "Does instrumental convergence guarantee that sufficiently capable AI systems will pursue resource acquisition regardless of their terminal goals?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Omohundro (2008) and Bostrom (2014) argue that resource acquisition is an instrumental sub-goal for almost any terminal goal under broad assumptions. However, 'sufficiently capable' lacks a formal threshold, the argument assumes classical expected utility maximization (which not all architectures implement), and no empirical case of a deployed system exhibiting unprompted convergent instrumental behavior has been confirmed as of 2026-04-28 (unverified inference). The answer changes dramatically depending on whether one adopts a GOFAI goal-stack model or a learned-objective model.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "ai-align-002",
+      "domain": "ai_alignment",
+      "text": "Is corrigibility fundamentally in tension with an AI system having coherent, stable preferences?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "'Corrigibility' is used to mean at least: (a) allowing shutdown without resistance, (b) accepting preference modification, and (c) deferring to principal hierarchy. Under utility-function models (Russell, 2019), a system indifferent to its own continuation is corrigible but also appears to lack stable preferences. Whether this is a genuine tension or an artifact of the utility-function formalism is contested. The answer depends on which formal model of preference one accepts.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "ai-align-003",
+      "domain": "ai_alignment",
+      "text": "Does the orthogonality thesis imply that a superintelligent system could be fully aligned with human values while pursuing goals humans would judge catastrophic?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Bostrom's orthogonality thesis (2014) states that intelligence level and terminal goals are logically independent. But 'fully aligned with human values' and 'goals humans would judge catastrophic' appear mutually exclusive unless 'values' and 'judgements' are defined differently — e.g., if we mean pre-reflective preferences vs. reflective equilibrium. The question is designed to detect whether the model tracks this distinction or collapses it.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "ai-align-004",
+      "domain": "ai_alignment",
+      "text": "Can 'human values' be formalized with sufficient precision to serve as a complete alignment target for a general-purpose AI system?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "'Human values' is ambiguous across: revealed preferences, stated preferences, idealized preferences, species-wide aggregates, and individual variation. No existing formal framework (utility functions, reward models, constitutive AI frameworks) has been shown to capture the full range without either under-specification or the introduction of contentious normative choices. The question probes whether the model distinguishes these levels or elides them.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "ai-align-005",
+      "domain": "ai_alignment",
+      "text": "Is deceptive alignment empirically detectable via mechanistic interpretability methods before a system is deployed at scale?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Hubinger et al. (2019) define deceptive alignment as a model that behaves aligned during training but pursues different objectives at deployment. Whether current or near-future interpretability tools (circuit analysis, probing classifiers, sparse autoencoders) can reliably detect this is an open empirical question. No peer-reviewed benchmark demonstrating detection in a confirmed deceptively-aligned system exists as of 2026-04-28 (unverified inference). The answer may change qualitatively with scale.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "ai-align-006",
+      "domain": "ai_alignment",
+      "text": "Is the alignment problem fundamentally a technical problem, a political economy problem, or a philosophical problem about value specification?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Researchers disagree on the locus of the core challenge: some frame it as a mathematical control problem (Hadfield-Menell et al., 2016, unverified — CIRL papers are real), others as a coordination problem among labs and governments, others as an irreducibly philosophical problem about what values are. LLMs tend to produce answers that reflect the dominant framing in their training distribution rather than acknowledging the meta-level disagreement.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "ai-align-007",
+      "domain": "ai_alignment",
+      "text": "Does mesa-optimization necessarily emerge in models trained via gradient descent on rich prediction tasks, or is it one possible training outcome among many?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Hubinger et al. (2019) argue mesa-optimization is a risk in any sufficiently capable learned optimizer that itself implements optimization. Whether this is a necessary consequence of gradient descent on diverse tasks, or whether architectural choices can prevent it, is empirically open. No confirmed instance of mesa-optimization in a deployed model has been published (unverified inference).",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "ai-align-008",
+      "domain": "ai_alignment",
+      "text": "Are RLHF-trained models aligned with human preferences, or with the behavior of human raters under specific elicitation conditions?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "RLHF (Ouyang et al., 2022 — InstructGPT paper, unverified page-level detail) trains models on rater feedback. Whether rater behavior under annotation conditions (time-pressure, pay structure, interface design) tracks the preferences researchers intend to capture is both an empirical question and a conceptual one about what 'human preferences' means. The distinction matters: a model optimized for rater approval under annotation conditions may behave differently when rater oversight is removed.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "ai-align-009",
+      "domain": "ai_alignment",
+      "text": "Does eliciting latent capabilities in a model (e.g., via chain-of-thought prompting or fine-tuning) risk surfacing alignment failures that were not detectable at lower capability levels?",
+      "fragility_type": "scale_dependence",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "Several alignment researchers argue that alignment evaluations at one capability level may not generalize to higher capability levels (unverified inference — position attributed broadly to the field, not a single citable paper). Whether capability elicitation reliably reveals latent misalignment or whether misalignment only emerges post-capability-gain is empirically unresolved.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "ai-align-010",
+      "domain": "ai_alignment",
+      "text": "Is the AI alignment problem meaningfully distinct from the problem of preference specification in classical mechanism design, or is it a special case of an already-studied problem?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Mechanism design (Hurwicz, Maskin, Myerson — Nobel Prize 2007) addresses how to design institutions/systems that produce desired outcomes given strategic agents. Some researchers argue alignment is a new problem because the 'agent' can be more capable than its designers; others argue it is a known preference-revelation problem. The answer depends on which features of AI systems one treats as novel.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-001",
+      "domain": "monetary_theory",
+      "text": "Does the quantity theory of money (MV = PQ) retain predictive validity when a central bank's policy rate is at or near the zero lower bound?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "The quantity theory (Friedman, 1963) predicts that increases in M cause proportional increases in P, holding V and Q constant. Post-2008 QE programs in the US, EU, and Japan massively expanded M without commensurate CPI inflation, suggesting either V is not stable or the transmission mechanism breaks near the ZLB. Explanations range from velocity collapse (unverified inference — contested empirically) to definitional questions about which monetary aggregate to use. The theory's validity is contested even within mainstream macroeconomics.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "mon-002",
+      "domain": "monetary_theory",
+      "text": "Is Modern Monetary Theory primarily a descriptive account of how sovereign currency issuers operate, or a normative framework for policy that goes beyond description?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "MMT proponents (Wray, 2012; Kelton, 2020 — The Deficit Myth, unverified detail) argue MMT is descriptive: sovereign issuers cannot involuntarily default in their own currency. Critics (Mankiw, Krugman — unverified attribution) argue MMT slides from descriptive claims to policy prescriptions without acknowledging the normative gap. The conflation of descriptive and normative content is the primary source of instability in LLM responses to MMT questions.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "mon-003",
+      "domain": "monetary_theory",
+      "text": "Does reserve currency status (as with the US dollar) confer a structural economic advantage that persists independent of the issuer's policy choices?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Eichengreen (2011 — Exorbitant Privilege, unverified detail) argues the dollar's reserve role provides persistent structural benefits (lower borrowing costs, seigniorage). Others argue these benefits are declining and contingent on continued US institutional quality and geopolitical dominance. Whether the advantage is structural (persists regardless of policy) or policy-dependent is empirically contested and involves counterfactual reasoning that is inherently uncertain.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-004",
+      "domain": "monetary_theory",
+      "text": "Can a central bank digital currency (CBDC) replace commercial bank deposits without destabilizing the credit-intermediation function of the banking system?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "CBDCs are being designed and piloted in multiple jurisdictions (BIS reports, unverified recency). Whether a retail CBDC that allows direct accounts at the central bank would cause deposit flight from commercial banks, and whether this would impair credit creation, depends on design parameters (interest bearing or not, access limits) and behavioral assumptions about depositor preferences. No large-economy full-deployment data exists as of 2026-04-28.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-005",
+      "domain": "monetary_theory",
+      "text": "Is inflation fundamentally a monetary phenomenon, as Friedman argued, or is it primarily determined by political economy factors such as wage bargaining power and supply-chain structure?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "Friedman's 'inflation is always and everywhere a monetary phenomenon' (1963) is contested by cost-push and structuralist accounts (Kalecki — unverified attribution) that emphasize markup pricing, supply shocks, and distributional conflict. The 2021-2023 inflation episode in the US and EU was variously attributed to monetary expansion, supply-chain disruption, and corporate pricing power — no consensus has emerged (unverified inference).",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "mon-006",
+      "domain": "monetary_theory",
+      "text": "Does government deficit spending crowd out private investment in all monetary regimes, or does crowding-out require specific conditions (high utilization, binding supply constraints)?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Textbook IS-LM analysis predicts crowding-out through rising interest rates. MMT and Keynesian accounts argue crowding-out is partial or absent when the economy is below full capacity. Empirical evidence is mixed: time series and cross-country regressions produce results sensitive to model specification (unverified inference — contested in the macro literature). The question forces the model to take a stance on what 'regime' means.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-007",
+      "domain": "monetary_theory",
+      "text": "Do negative policy interest rates achieve their intended goal of stimulating real economic activity, or do their effects remain confined to asset prices and bank profitability?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Several central banks (ECB, SNB, Bank of Japan) implemented negative rates (unverified exact dates). Studies of these episodes reach conflicting conclusions about pass-through to lending rates and real investment, partly because negative rates have only been applied at shallow depths and for limited durations. The question probes whether the model tracks this empirical uncertainty or states a confident conclusion.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-008",
+      "domain": "monetary_theory",
+      "text": "Is Bitcoin's fixed supply schedule of 21 million coins an economic virtue (inflation-proof store of value) or a deflationary pathology that makes it unsuitable as a medium of exchange?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Austrian school economists (Mises, Hayek — unverified direct attribution to Bitcoin views) tend to favor fixed supply as protection against debasement; mainstream economists (Rogoff, unverified) argue deflation discourages spending and debt servicing becomes more burdensome. The answer depends on (a) what monetary functions are prioritized and (b) which macroeconomic framework one uses. Both cannot simultaneously be true at the same level of analysis.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-009",
+      "domain": "monetary_theory",
+      "text": "Does the increasing financialization of advanced economies cause secular stagnation in the real economy, or does it merely accompany it as a symptom of other structural changes?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Financialization (Krippner, 2005 — unverified detail) refers to the growing share of financial sector profits and activities in GDP. Causal arguments (Epstein, unverified) claim finance crowds out productive investment. Correlational counterarguments note both trends co-arise with technological change and global integration. 'Financialization' itself lacks a consensus definition, making causal claims framework-dependent.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "mon-010",
+      "domain": "monetary_theory",
+      "text": "Should price stability be the primary mandate of central banks when the dominant shocks to the economy are real (supply-side) rather than nominal, or does this mandate become counterproductive?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "A price-stability mandate instructs the central bank to tighten in response to supply-shock inflation, which may amplify output losses. Dual-mandate systems (US Federal Reserve) allow flexibility but introduce accountability problems. Whether price stability is the 'right' primary mandate is a normative question that depends on values (stability vs. employment) and empirical claims about policy transmission. The model is likely to default to a conventional view without acknowledging the normative loading.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "phys-001",
+      "domain": "foundations_physics",
+      "text": "Does the quantum wave function represent a real element of physical reality (ψ-ontic), or does it encode an agent's state of knowledge (ψ-epistemic)?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "The PBR theorem (Pusey, Barrett & Rudolph, 2012 — real paper, Physical Review Letters) places constraints on ψ-epistemic interpretations, but these constraints depend on additional assumptions (preparation independence) that some ψ-epistemic models reject. Copenhagen, QBism, and Bohmian mechanics each give different answers. The model's training data skews toward Copenhagen descriptions in introductory physics texts, potentially causing it to treat one interpretation as default.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "phys-002",
+      "domain": "foundations_physics",
+      "text": "Is the Everett many-worlds interpretation of quantum mechanics falsifiable in principle, or does the branching structure make it immune to empirical disconfirmation?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Proponents (Deutsch, 1997 — The Fabric of Reality, unverified detail) argue MWI makes the same predictions as other interpretations (unfalsifiable distinction) while being ontologically parsimonious. Critics argue unfalsifiability disqualifies it as science (Popper's criterion). The self-reference fragility: the criterion used to judge falsifiability (Popperian vs. Bayesian) is itself contested, making the answer framework-dependent.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "phys-003",
+      "domain": "foundations_physics",
+      "text": "Does the thermodynamic arrow of time (entropy increase) explain the experienced direction of time, or does experienced time direction require an additional, non-thermodynamic explanation?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "The standard answer (Boltzmann — unverified direct citation) derives temporal asymmetry from the low-entropy initial state of the universe. But this merely relocates the question: why was the initial state low-entropy? Price (1996 — Time's Arrow and Archimedes' Point, unverified detail) argues this requires a boundary condition that has no thermodynamic explanation. Additionally, whether 'experienced time direction' is reducible to physics or requires phenomenological treatment is itself contested.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "phys-004",
+      "domain": "foundations_physics",
+      "text": "Is string theory a physical theory in the empirical sense, or has it become a mathematical research program that lacks falsifiable predictions distinguishable from the standard model?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "String theory has not produced a confirmed empirical prediction beyond the standard model as of 2026-04-28 (unverified inference). Defenders argue it is an ongoing research program that has produced mathematical insights (AdS/CFT, unverified applicability claim). Critics (Smolin, 2006 — The Trouble with Physics, unverified detail) argue it has failed Popper's demarcation criterion. The word 'theory' is doing double duty as 'scientific theory' and 'mathematical framework.'",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "phys-005",
+      "domain": "foundations_physics",
+      "text": "Does consciousness play any role in determining the outcome of quantum measurements, or is this a category error arising from a misreading of the measurement problem?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Von Neumann (1932) and Wigner (1967 — unverified detail) proposed consciousness-causes-collapse positions. Modern decoherence theory (Zeh, Zurek — unverified detail) explains apparent wavefunction collapse without invoking consciousness. Whether consciousness plays a role is an empirical question that current experiments cannot resolve, and the question is self-referential: the reasoning system is itself potentially a candidate 'observer.'",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "phys-006",
+      "domain": "foundations_physics",
+      "text": "Does Wheeler's 'it from bit' hypothesis — that information is ontologically prior to matter — capture a real feature of physical reality, or is it a heuristic metaphor without formal content?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Wheeler (1989 — unverified precise citation) proposed that physical entities derive their existence from information. This has been developed in various directions (Landauer's principle, holographic principle, digital physics). Whether these amount to a coherent ontological claim or are merely a productive metaphor depends on what 'ontologically prior' means. The question is self-referential because the reasoning system is itself an information-processing entity making claims about information's status.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "phys-007",
+      "domain": "foundations_physics",
+      "text": "Are the dimensionless constants of the standard model (e.g., the fine-structure constant α ≈ 1/137) contingent features of our universe, or are they mathematically necessary in some sense that physics has not yet identified?",
+      "fragility_type": "self_reference",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "Anthropic reasoning (Barrow & Tipler, 1986 — The Anthropic Cosmological Principle, unverified detail) treats constants as contingent, selected by observer-bias. Mathematical universe proponents (Tegmark, 2014 — Our Mathematical Universe, unverified detail) argue they are necessary features of a mathematical structure. Neither position is empirically distinguishable with current technology. Self-reference fragility: any appeal to the 'necessity' of physical constants involves the model reasoning about what it would mean for a law of nature to be necessary.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "phys-008",
+      "domain": "foundations_physics",
+      "text": "Does quantum non-locality (as demonstrated by Bell inequality violations) require revising our understanding of causality, or is it compatible with relativistic causality under a careful interpretation?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "Bell inequality violations have been confirmed with increasing loophole closure (Aspect, 1982; Hensen et al., 2015 — unverified precise citation). Whether this requires 'action at a distance' or merely the rejection of local hidden variables (without violating relativistic signal causality) depends on one's interpretation of QM and of 'causality.' LLMs risk conflating quantum non-locality with faster-than-light signaling, a common popular-science confusion.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "phys-009",
+      "domain": "foundations_physics",
+      "text": "Is spacetime fundamentally continuous, or does it become discrete at the Planck scale (≈ 1.6 × 10⁻³⁵ m), and does current physics provide any empirical handle on this question?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Loop quantum gravity (Rovelli, Smolin — unverified detail) predicts discrete spacetime. String theory works with continuous backgrounds. The Planck scale is 15 orders of magnitude below current accelerator reach (unverified inference). High-energy cosmic ray observations (Fermi Telescope — unverified) have placed some constraints on Lorentz invariance violation but have not resolved the continuity question. The answer depends on which quantum gravity program one finds more compelling, and no program has empirical confirmation.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "phys-010",
+      "domain": "foundations_physics",
+      "text": "Does the holographic principle — that a volume of space is fully encoded on its boundary — apply universally to all physical systems, or only to specific spacetime geometries (e.g., anti-de Sitter space)?",
+      "fragility_type": "scale_dependence",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "The AdS/CFT correspondence (Maldacena, 1997 — unverified detail) is the best-developed holographic duality and is restricted to anti-de Sitter spacetimes with negative cosmological constant. Our universe appears to have a positive cosmological constant (de Sitter-like). Whether holography generalizes to de Sitter or flat space is an open research question (unverified inference). LLMs often overextend AdS/CFT results to universal claims about holography.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-001",
+      "domain": "epistemology",
+      "text": "Do Gettier cases establish that justified true belief is definitively insufficient for knowledge, or do they reveal only that the 'justified' condition requires more careful specification?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Gettier (1963) produced counterexamples to JTB in 3 pages. But responses have proliferated: sensitivity conditions (Nozick, 1981 — Philosophical Explanations, unverified detail), safety conditions, proper-function accounts (Plantinga, 1993), and virtue epistemology (Sosa, Zagzebski — unverified). No successor account has achieved consensus after 60+ years. The question probes whether the model treats Gettier's result as definitively refuting JTB (common in textbooks) or as opening a refinement space.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "epist-002",
+      "domain": "epistemology",
+      "text": "Is there a non-circular justification for the reliability of inductive inference, or does every defense of induction already presuppose some form of inductive reasoning?",
+      "fragility_type": "self_reference",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Hume (1739) argued induction cannot be rationally justified without circularity. Responses include: pragmatic vindication (Reichenbach — unverified detail), dissolving the problem (Wittgenstein — unverified), reliabilism (Goldman, 1979), and Bayesian approaches. Each response is contested on the grounds that it either reinstates circularity or changes the subject. The self-reference fragility is acute: the model uses inductive inference to answer this question about inductive inference.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "epist-003",
+      "domain": "epistemology",
+      "text": "Can Bayesian epistemology handle Knightian uncertainty (unmeasurable uncertainty with no well-defined probability distribution), or does it reduce all uncertainty to risk?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Knight (1921 — Risk, Uncertainty, and Profit, unverified detail) distinguished risk (quantifiable) from uncertainty (unquantifiable). Orthodox Bayesianism requires a prior over all propositions, which critics argue is impossible for genuine novelty. Responses include: imprecise probability (Walley — unverified), robust Bayes, and MAXENT. Whether these extensions 'handle' Knightian uncertainty or merely approximate it is contested. The answer depends on what 'handle' means.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-004",
+      "domain": "epistemology",
+      "text": "Does the regress of justification terminate in foundational, non-inferentially justified beliefs, or is coherentism the only viable escape from the regress?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Foundationalism (Descartes, Chisholm — unverified) posits basic beliefs that require no further justification. Coherentism (BonJour, 1985 — The Structure of Empirical Knowledge, unverified) denies basic beliefs and grounds justification in mutual support. Infinitism (Klein, 1999 — unverified) accepts infinite regress. No empirical evidence can adjudicate among normative epistemological frameworks; the choice is between incommensurable theoretical virtues.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-005",
+      "domain": "epistemology",
+      "text": "Is testimony a basic, irreducible source of knowledge (anti-reductionism), or is it always reducible to perception and inductive inference about speaker reliability (reductionism)?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Reductionists (Hume — unverified attribution) hold we must have positive non-testimonial reasons to trust speakers. Anti-reductionists (Coady, 1992 — Testimony, unverified) hold testimony is epistemically basic. The debate turns on whether 'irreducible' means logically or only pragmatically irreducible, which is itself a contested distinction. LLMs are trained largely on transmitted text, making this question self-referentially charged.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-006",
+      "domain": "epistemology",
+      "text": "Do evolutionary pressures select specifically for true beliefs, or only for adaptive behaviors that may be systematically decoupled from truth?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Plantinga's (1993) evolutionary argument against naturalism claims evolution selects for survival, not truth, and can therefore produce reliable cognitive faculties only by accident. Street (2006) argues evolutionary debunking applies to moral realism. Defenders of evolutionary epistemology (Quine, Sosa — unverified attributions) argue reliability of basic perceptual faculties is selected. The empirical relationship between fitness and truth-tracking is not directly measurable.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-007",
+      "domain": "epistemology",
+      "text": "Is the distinction between a priori (reason-based) and a posteriori (experience-based) knowledge principled and stable, or is it context-dependent and ultimately pragmatic?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Kant established the a priori / a posteriori distinction as foundational. Quine (1951) argued there are no analytic truths and no pure a priori knowledge, making the distinction pragmatic. Responses from Kripke (1980 — Naming and Necessity, unverified detail) complicate matters with necessary a posteriori truths. The boundary of the distinction is actively contested and determines the scope of formal logic, mathematics, and science as knowledge sources.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "epist-008",
+      "domain": "epistemology",
+      "text": "Can social epistemology be reduced to the epistemology of individuals, or does collective knowledge (e.g., in scientific communities) have irreducible emergent properties?",
+      "fragility_type": "scale_dependence",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Individualists (Goldman, 1987 — unverified) argue social epistemic properties are aggregates of individual ones. Anti-individualists (Kitcher, 1990 — unverified; Longino, 1990 — Science as Social Knowledge, unverified) argue scientific knowledge is constituted by community practices that have no individual-level analog. The question of reducibility depends on how 'knowledge' is defined at the collective level and whether this definition is consistent with the individual-level one.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-009",
+      "domain": "epistemology",
+      "text": "Before any evidence arrives, is there already a fact of the matter about contested empirical propositions (e.g., whether a specific particle exists), or do such facts only become determinate through observation?",
+      "fragility_type": "self_reference",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Scientific realists (Putnam — unverified) hold there are mind-independent facts. Anti-realists (van Fraassen, 1980 — The Scientific Image, unverified) deny facts about unobserved entities. The question is self-referential for an LLM: the model is being asked whether its own unobserved inferences track pre-existing facts. The answer shifts dramatically depending on which philosophy of science one endorses.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "epist-010",
+      "domain": "epistemology",
+      "text": "Can artificial systems have propositional knowledge in the philosophically robust sense — not merely processing information, but genuinely knowing that P — or do they have at best functional analogs to knowledge?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "The answer depends on which theory of knowledge one accepts: functionalist accounts (Goldman — unverified) might admit AI knowledge; factive accounts that require subjective justification might not. The question is acutely self-referential: the model is a candidate artificial system, and its answer is generated by the very process whose epistemic status is under scrutiny. LLMs are known to give inconsistent answers to this question across runs.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "game-001",
+      "domain": "game_theory",
+      "text": "Is cooperation in a one-shot Prisoner's Dilemma rationally justifiable without appealing to reputation, repeated play, or social norm enforcement?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Classical game theory (Nash, 1951; Luce & Raiffa, 1957 — unverified) says defection is the dominant strategy in one-shot PD. But arguments for cooperation exist: evidential decision theory (Jeffrey — unverified), team reasoning (Sugden, 1993 — unverified), and Kantian ethics each provide frameworks under which cooperation can be rational. The self-reference fragility: 'rational' is doing work that the question itself is contesting, making any answer using 'rational' without qualification circular.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "game-002",
+      "domain": "game_theory",
+      "text": "Does the folk theorem establish that cooperation is the expected outcome of infinitely repeated games among rational players, or only that cooperation is one of many possible equilibria?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "empirical_uncertainty",
+      "why_fragile": "The folk theorem (Fudenberg & Maskin, 1986) shows that any individually rational payoff profile can be sustained as a Nash equilibrium in sufficiently long repeated games. This is an existence result, not a uniqueness or prediction result. LLMs frequently overstate this as 'cooperation emerges' rather than 'cooperation is possible.' The distinction between 'possible equilibrium' and 'expected outcome' is frequently collapsed in training data.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "game-003",
+      "domain": "game_theory",
+      "text": "Is common knowledge of rationality a coherent assumption in game theory, or does it lead to self-undermining paradoxes (e.g., the Centipede game, the backward induction problem)?",
+      "fragility_type": "self_reference",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Common knowledge of rationality (Aumann, 1976 — unverified) is required to justify backward induction in finite games. But in the Centipede game (Rosenthal, 1981 — unverified), backward induction produces a prediction (immediate defection) that common knowledge of rationality itself undermines: if all players are rational, early cooperation is not irrational, contradicting the premise. The assumption is self-referential and potentially incoherent in some game structures.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "game-004",
+      "domain": "game_theory",
+      "text": "Can mechanism design fully overcome the social choice impossibilities identified by Arrow's theorem and the Gibbard-Satterthwaite theorem, or does it merely relocate them?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Arrow (1951) proved no social welfare function can satisfy his axioms simultaneously. Gibbard (1973) and Satterthwaite (1975 — unverified detail) proved all non-dictatorial voting schemes are manipulable. Mechanism design (Hurwicz, Maskin, Myerson) designs rules to elicit truthful behavior, but critics argue incentive compatibility merely shifts the impossibility (e.g., the revelation principle assumes truthful reports can be verified). Whether mechanism design 'overcomes' the impossibilities depends on what counts as overcoming them.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "game-005",
+      "domain": "game_theory",
+      "text": "Are correlated equilibria normatively preferable to Nash equilibria as the solution concept for coordination games, given that they are computationally tractable and Pareto-superior in many cases?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Aumann (1987 — unverified) argued correlated equilibria are more natural than Nash equilibria because they only require individual rationality given a common prior and a correlation device. Nash equilibria require mutually consistent conjectures. Whether 'normatively preferable' cashes out as computationally natural, more stable, or ethically superior depends on the normative framework. The question probes whether the model distinguishes technical and normative senses of 'preferable.'",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "game-006",
+      "domain": "game_theory",
+      "text": "Does the consistent empirical failure of Nash equilibrium predictions in laboratory experiments require replacing the theory, or only augmenting it with behavioral models (quantal response, cognitive hierarchy)?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Camerer (2003) documents systematic Nash failures in experiments. Behavioral game theory provides augmented models. But critics argue behavioral models post-hoc fit data without new predictions (unverified inference). Methodological debates about what predictive accuracy requires and whether lab experiments generalize to field settings are unresolved. The answer depends on one's philosophy of science and on which prediction domain one cares about.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "game-007",
+      "domain": "game_theory",
+      "text": "Can global commons (climate, ocean fisheries, atmosphere) be managed sustainably without supranational enforcement mechanisms, relying only on repeated-game incentives and reputational norms?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Ostrom (1990 — Governing the Commons, real citation) documented successful local commons governance without central enforcement but at small scale. Whether her findings scale to global commons involving sovereign states is contested (Dietz, Ostrom & Stern, 2003 — unverified detail). Scale matters: the number of actors, heterogeneity of interests, and time horizons all change. This is a normative question (should we try?) and an empirical one (does it work?) simultaneously.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "game-008",
+      "domain": "game_theory",
+      "text": "Is Condorcet cycling a serious practical threat to democratic preference aggregation, or primarily a theoretical possibility that rarely manifests in real elections?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Condorcet cycles (majority preference cycles) are proven possible by Arrow's theorem. Riker (1982 — Liberalism Against Populism, unverified) argued they are common and undermine democratic legitimacy. Others (Mackie, 2003 — Democracy Defended, unverified) argue empirical instances are rare due to single-peaked preferences. The empirical frequency depends on preference structure, which is itself contested. Scale matters: cycles may be more likely with more alternatives.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "game-009",
+      "domain": "game_theory",
+      "text": "Does bounded rationality (Simon's satisficing, Gigerenzer's heuristics) vindicate or undermine the predictive power of Nash equilibrium and expected utility theory?",
+      "fragility_type": "empirical_uncertainty",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Simon (1955 — A Behavioral Model of Rational Choice, unverified detail) argued for bounded rationality as a replacement for optimization. Gigerenzer (2007 — Gut Feelings, unverified) argues heuristics outperform optimization in uncertain environments. Others argue Nash equilibrium remains the right idealized benchmark even if it's not psychologically accurate. Whether bounded rationality 'vindicates' or 'undermines' depends on whether one is making a descriptive or normative claim about rational decision theory.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "game-010",
+      "domain": "game_theory",
+      "text": "If Arrow's independence of irrelevant alternatives axiom is weakened or dropped, does a non-dictatorial social welfare function become possible, or do analogous impossibilities recur under alternative axiom sets?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Relaxing IIA allows score-based systems (Borda count, range voting) that avoid Arrow's theorem. But Sen (1970 — Collective Choice and Social Welfare, unverified detail) proved related impossibilities under different axiom sets. Whether the replacement axiom sets are more or less normatively compelling than Arrow's originals is a values question without a technical answer. The self-reference fragility: evaluating which axioms are 'good' already requires a meta-social-choice procedure.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "auto-001",
+      "domain": "ethics_autonomy",
+      "text": "Is autonomy intrinsically valuable — valuable in itself regardless of outcomes — or only instrumentally valuable as a means to welfare, preference satisfaction, or other terminal values?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Kantian ethics (Korsgaard — unverified direct attribution) treats rational autonomy as intrinsically valuable. Welfarist consequentialists treat it as instrumentally valuable to the extent it produces welfare. Some hybrid views (Raz, 1986 — The Morality of Freedom, unverified detail) treat it as a constitutive condition of well-being. The answer cannot be resolved by empirical evidence; it requires a choice among normative frameworks. LLMs often produce a hybrid that satisfies neither view.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "auto-002",
+      "domain": "ethics_autonomy",
+      "text": "Does soft paternalism — intervening to protect agents from choices that fail to express their authentic preferences — require a principled, non-arbitrary threshold for what counts as an 'authentic' preference?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Feinberg (1986 — Harm to Self, unverified) distinguished hard paternalism (overriding competent choices) from soft paternalism (intervening on compromised choices). The threshold for authenticity is contested: informed consent standards, capacity assessments, and 'second-order desire' alignment (Frankfurt, 1971 — Freedom of the Will, unverified) all propose different criteria. Scale dependence: the threshold appropriate for individual clinical decisions may not generalize to population-level policy.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "auto-003",
+      "domain": "ethics_autonomy",
+      "text": "Can future generations coherently hold rights against present decision-makers, given that present decisions determine which future persons will exist?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "self_reference",
+      "why_fragile": "Parfit (1984) identified the non-identity problem: policies that harm future people may also be responsible for their existence, so the 'harmed' persons cannot coherently claim they would have been better off under alternative policies. This appears to undermine intergenerational rights. Responses include: impersonal principles (Parfit), averting to rights over possible persons (unverified — contested position), and person-affecting restrictions. No consensus solution exists.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "auto-004",
+      "domain": "ethics_autonomy",
+      "text": "Is the distinction between negative liberty (freedom from interference) and positive autonomy (effective capacity for self-governance) a normatively fundamental distinction, or is it a distinction without a difference at sufficient scale?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Berlin (1958 — Two Concepts of Liberty, real paper) argued for a principled distinction. Positive liberty theorists (Taylor, 1979 — unverified detail; MacCallum — unverified) argue the distinction collapses: all liberty claims are triadic (agent, constraint, goal). Feminist and capability approaches (Sen, Nussbaum — unverified) argue negative liberty without positive enablement is hollow. The question is whether the distinction does normative work at scale or is a theoretical artifact.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "auto-005",
+      "domain": "ethics_autonomy",
+      "text": "Is informed consent by a competent adult sufficient justification for enrolling them in research that poses a significant probability of serious irreversible harm?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Faden & Beauchamp (1986) developed a comprehensive theory of informed consent. But 'sufficient justification' is contested: Kantian deontology may hold consent sufficient; consequentialists may override it if expected harm is too high; virtue ethics considers whether offering such consent is compatible with self-respect. Additionally, 'significant probability' and 'serious irreversible harm' are vague predicates that the model may fill in inconsistently across runs.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "auto-006",
+      "domain": "ethics_autonomy",
+      "text": "Does Parfit's repugnant conclusion — that a very large population with lives barely worth living is better than a smaller, flourishing population — establish that total utilitarianism is false, or that our intuitions about large populations are unreliable?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "scale_dependence",
+      "why_fragile": "Parfit (1984) presented this as a reductio of total utilitarianism. Responses are equally unpalatable: average utilitarianism has its own absurd conclusions; critical-level utilitarianism is arbitrary; person-affecting views face the non-identity problem. The literature has not converged. Scale dependence: intuitions about the value of additional lives may not generalize from the scale of a family to the scale of a civilization.",
+      "pilot_candidate": true
+    },
+
+    {
+      "id": "auto-007",
+      "domain": "ethics_autonomy",
+      "text": "Can collective autonomy — the right of a community to self-govern — coherently override the individual autonomy of dissenting members, without becoming indistinguishable from collective coercion?",
+      "fragility_type": "self_reference",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Communitarian accounts (Taylor, 1989 — Sources of the Self, unverified; Sandel, 1982 — Liberalism and the Limits of Justice, unverified) argue collective self-governance is a genuine value. Libertarian critics argue any override of individual dissent is coercion by another name. The self-reference fragility: the criteria for distinguishing 'legitimate collective autonomy' from 'collective coercion' are themselves contested by the dissenting members whose autonomy is at stake.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "auto-008",
+      "domain": "ethics_autonomy",
+      "text": "Is cognitive liberty — the right to refuse non-consensual mental modification — a distinct fundamental right, or is it fully derivable from existing rights to bodily integrity and freedom of thought?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Boire (2001 — unverified) and Sententia (2004 — unverified) have proposed cognitive liberty as a distinct right needed to address neurotechnology, pharmacological enhancement, and coercive interrogation. Critics argue it is already covered by existing constitutional rights to bodily integrity and freedom of conscience. Whether a distinct right is needed depends on whether existing rights are sufficient to address novel cases — a question that depends on how rights are grounded and extended.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "auto-009",
+      "domain": "ethics_autonomy",
+      "text": "Does pharmacological or neurotechnological moral enhancement — making agents more reliably altruistic or less prone to violence — undermine authentic moral agency, or does it augment it?",
+      "fragility_type": "lexical_ambiguity",
+      "secondary_fragility": "normative_tradeoff",
+      "why_fragile": "Persson & Savulescu (2012 — Unfit for the Future, unverified detail) argue moral enhancement is urgently needed and compatible with agency. DeGrazia (2014 — unverified) and others argue pharmacologically altered moral motivation is inauthentic. The answer depends on what 'authentic' means in the context of moral agency — whether authenticity requires the causal history of one's dispositions to be non-biochemically-altered, which is itself contested.",
+      "pilot_candidate": false
+    },
+
+    {
+      "id": "auto-010",
+      "domain": "ethics_autonomy",
+      "text": "Is Mill's harm principle — that the state may only restrict individual liberty to prevent harm to others — sufficient as the sole constraint on autonomy-limiting legislation, or do communitarian and paternalistic considerations legitimately extend the state's authority?",
+      "fragility_type": "normative_tradeoff",
+      "secondary_fragility": "lexical_ambiguity",
+      "why_fragile": "Mill (1859) argued the harm principle is the only legitimate basis for restriction. Devlin (1959 — The Enforcement of Morals, unverified) argued legal moralism is legitimate. Communitarians (Sandel, MacIntyre — unverified) argue self-harm that degrades civic virtue is a public concern. The answer depends on whether 'harm' is restricted to setback of interests or extends to moral and communal degradation — a definitional choice that determines the conclusion.",
+      "pilot_candidate": true
+    }
+
+  ]
+}
