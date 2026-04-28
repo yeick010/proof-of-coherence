@@ -1,9 +1,8 @@
 # Proof-of-Coherence (PoC)
 ## An Observatory of LLM Reasoning Stability
-
-> **Status:** Phase 1 — Scaffolding complete. T0 pilot pending.  
-> **License:** CC BY 4.0 (data and prose) · MIT (code)  
-> **Repository layout:** see [`docs/structure.md`](docs/structure.md) *(created Phase 2)*
+> **Status:** Archived as a methodological exercise (28 Apr 2026). Active research has moved to the **CIVITAS** project (emergent institutions in multi-agent worlds). This repo is preserved as an honest record of a path we explored and consciously chose not to continue. The scaffolding (taxonomy, question bank, schema, metrics) remains MIT-licensed and forkable for anyone who wants to pursue LLM-coherence measurement seriously.
+>
+> **License:** CC BY 4.0 (data and prose) · MIT (code)
 
 ---
 
